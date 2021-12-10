@@ -1,0 +1,35 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+    <title>Duke Plasto</title>
+</head>
+
+<body style="background-image: url('{% static " images/home.png" %}'); ">
+
+    <div class=" form mx-5">
+    <p>Log in</p>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input id="email" type="email" name="email" placeholder="Email">
+        <input id="password" type="password" name="password" placeholder="Password">
+        <button id="loginbtn">Log in</button>
+        <a href="{% url 'register' %}">Register Here</a>
+    </form>
+    </div>
+
+
+   
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/popper.js' %}"></script>
+</body>
+
+</html>

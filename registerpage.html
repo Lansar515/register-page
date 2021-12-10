@@ -1,0 +1,97 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+    <title>Duke Plasto</title>
+ 
+
+
+
+</head>
+
+<body style="background-image: url('{% static " images/home.png" %}'); ">
+
+    <div class=" form mx-5">
+    <p> Register</p>
+    <form id="myForm" action="" method="POST">
+        {% csrf_token %}
+        <label for="name_id">Enter Your Name</label>
+        <input type="text" name="name" id="name_id">
+
+
+        <label for="email_id">Enter Your Email</label>
+        <input type="email" name="email" id="email_id">
+
+
+        <label for="mobile_number_id">Enter Your Mobile Number</label>
+        <input  title="Enter only 10 Numbers without any postal code" type="text" name="mobile_number" id="mobile_number_id">
+        
+
+
+        <label for="password_id">Enter Password</label>
+        <input type="password" name="password" id="password_id">
+
+
+        <label for="confirm_password_id">Confirm Your Password</label>
+        <input type="password" name="confirm_password" id="confirm_password_id">
+
+
+        <label for="age_id">Enter Your Age</label>
+        <input type="number" name="age" id="age_id" min="1" max="150">
+
+        <select name="Gender" id="gender_id" class="form-select" aria-label="Default select example">
+            <option value="" selected disabled>Select Your Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <button class="btn btn-secondary">Submit</button>
+    </form>
+    </div>
+
+
+    <script type="text/javascript">
+
+        var frm = $('#myForm');
+        frm.submit(function () {
+            $.ajax({
+                type: "POST",
+                url: "{% url 'jaha bhejna hai vaha ka url' %}",
+                data: {
+                    name: $('#name_id').val(),
+                    email: $('#email_id').val(),
+                    mobile_number: $('#mobile_number_id').val(),
+                    password: $('#password_id').val(),
+                    confirm_password: $('#confirm_password_id').val(),
+                    age: $('#age_id').val(),
+                    gender: $('#gender_id').val(),
+
+                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+                },
+                success: function (data) {
+                    alert('Succesfully submited')
+                },
+                error: function (data) {
+                    console.log(data)
+                }
+            });
+            return false;
+        });
+
+    </script>
+
+
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/popper.js' %}"></script>
+</body>
+
+</html>
